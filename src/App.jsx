@@ -1,28 +1,47 @@
-import { useState } from 'react'
+import React from 'react';
+import Hero from './components/Hero.jsx';
+import Bio from './components/Bio.jsx';
+import ProjectsGallery from './components/ProjectsGallery.jsx';
+import ContactForm from './components/ContactForm.jsx';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
+    <div className="min-h-screen bg-neutral-50 text-neutral-900">
+      <header className="fixed top-0 inset-x-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/60 border-b border-neutral-200">
+        <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
+          <a href="#home" className="font-semibold tracking-tight text-lg">Atelier</a>
+          <nav className="hidden md:flex items-center gap-8 text-sm">
+            <a href="#work" className="hover:text-neutral-600 transition-colors">Work</a>
+            <a href="#about" className="hover:text-neutral-600 transition-colors">About</a>
+            <a href="#contact" className="rounded-full bg-neutral-900 text-white px-4 py-2 hover:bg-neutral-800 transition-colors">Contact</a>
+          </nav>
         </div>
-      </div>
-    </div>
-  )
-}
+      </header>
 
-export default App
+      <main>
+        <section id="home" className="pt-24">
+          <Hero />
+        </section>
+        <section id="about">
+          <Bio />
+        </section>
+        <section id="work">
+          <ProjectsGallery />
+        </section>
+        <section id="contact">
+          <ContactForm />
+        </section>
+      </main>
+
+      <footer className="mt-24 border-t border-neutral-200">
+        <div className="mx-auto max-w-7xl px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-neutral-600">
+          <p>© {new Date().getFullYear()} Atelier — Modern Architecture</p>
+          <div className="flex items-center gap-6">
+            <a href="#contact" className="hover:text-neutral-900">Get in touch</a>
+            <a href="#work" className="hover:text-neutral-900">Portfolio</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
